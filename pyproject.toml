@@ -1,0 +1,17 @@
+[project]
+name = "dsa-prerequisite-portfolio"
+version = "1.0.0"
+description = "Interactive Flask portfolio project for Python DSA prerequisite concepts."
+requires-python = ">=3.11"
+dependencies = [
+    "Flask==3.1.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.4.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

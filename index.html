@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Interactive Python DSA prerequisite portfolio lab." />
+  <title>DSA Launchpad | Python Prerequisite Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top"><span class="brand-mark">λ</span> DSA Launchpad</a>
+    <nav>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#labs">Labs</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#about">About</a>
+    </nav>
+    <button id="themeToggle" class="icon-button" aria-label="Toggle theme">☾</button>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-copy">
+        <div class="eyebrow">PYTHON • DSA PREREQUISITES • PORTFOLIO PROJECT</div>
+        <h1>Build the mental models <span>before</span> the algorithms.</h1>
+        <p>
+          An interactive learning lab for the Python concepts, complexity intuition,
+          memory models, recursion, OOP, and problem-solving patterns that make Data Structures & Algorithms click.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#labs">Open the labs</a>
+          <a class="button ghost" href="#roadmap">View prerequisite map</a>
+        </div>
+        <div class="stats">
+          <div><strong>8</strong><span>Prerequisite modules</span></div>
+          <div><strong>5</strong><span>Interactive labs</span></div>
+          <div><strong>100%</strong><span>Python-focused</span></div>
+        </div>
+      </div>
+
+      <div class="hero-terminal card">
+        <div class="terminal-bar">
+          <span></span><span></span><span></span>
+          <small>prerequisite_check.py</small>
+        </div>
+        <pre><code><span class="code-purple">student</span> = {
+  <span class="code-green">"python"</span>: <span class="code-blue">True</span>,
+  <span class="code-green">"big_o"</span>: <span class="code-blue">True</span>,
+  <span class="code-green">"references"</span>: <span class="code-blue">True</span>,
+  <span class="code-green">"recursion"</span>: <span class="code-blue">True</span>,
+  <span class="code-green">"oop"</span>: <span class="code-blue">True</span>,
+}
+
+<span class="code-purple">ready_for_dsa</span> = <span class="code-fn">all</span>(student.values())
+
+<span class="code-comment"># Output</span>
+<span class="code-green">✓ Foundation unlocked</span></code></pre>
+      </div>
+    </section>
+
+    <section id="roadmap" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">01 / ROADMAP</span>
+          <h2>DSA prerequisite map</h2>
+        </div>
+        <p>Click a module to expand the exact concepts you should be comfortable with before advanced data structures.</p>
+      </div>
+      <div id="topicGrid" class="topic-grid"></div>
+    </section>
+
+    <section id="labs" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">02 / INTERACTIVE LABS</span>
+          <h2>Learn by changing the inputs</h2>
+        </div>
+        <p>Each lab turns an abstract prerequisite into something you can inspect and manipulate.</p>
+      </div>
+
+      <div class="lab-grid">
+        <article class="card lab-card lab-wide">
+          <div class="lab-heading">
+            <div><span class="badge">BIG O</span><h3>Complexity Growth Explorer</h3></div>
+            <span class="mono" id="complexityResult">O(n) → 32 ops</span>
+          </div>
+          <div class="controls">
+            <label>Growth model
+              <select id="complexityKind">
+                <option value="constant">O(1)</option>
+                <option value="logarithmic">O(log n)</option>
+                <option value="linear" selected>O(n)</option>
+                <option value="linearithmic">O(n log n)</option>
+                <option value="quadratic">O(n²)</option>
+              </select>
+            </label>
+            <label>Input size n: <strong id="nValue">32</strong>
+              <input id="nRange" type="range" min="1" max="128" value="32" />
+            </label>
+          </div>
+          <div id="growthBars" class="growth-bars"></div>
+          <p class="hint">Compare the shape, not just the exact number. DSA uses growth rate to predict scalability.</p>
+        </article>
+
+        <article class="card lab-card">
+          <div class="lab-heading">
+            <div><span class="badge">RECURSION</span><h3>Call Stack Visualizer</h3></div>
+          </div>
+          <div class="controls compact">
+            <label>factorial(n)
+              <input id="factorialInput" type="number" min="0" max="10" value="5" />
+            </label>
+            <button id="runRecursion" class="button primary small">Trace</button>
+          </div>
+          <div id="stackOutput" class="stack-output"></div>
+        </article>
+
+        <article class="card lab-card">
+          <div class="lab-heading">
+            <div><span class="badge">MEMORY</span><h3>Reference & Aliasing Demo</h3></div>
+          </div>
+          <p>See why two variable names can point at the same mutable object.</p>
+          <button id="runReference" class="button ghost small">Run reference demo</button>
+          <pre id="referenceOutput" class="mini-console">Click run to inspect object relationships.</pre>
+        </article>
+
+        <article class="card lab-card lab-wide">
+          <div class="lab-heading">
+            <div><span class="badge">PYTHON BUILT-INS</span><h3>Complexity Cheat Table</h3></div>
+          </div>
+          <div class="table-tools">
+            <input id="builtinSearch" placeholder="Filter by list, dict, lookup..." />
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Structure</th><th>Operation</th><th>Average</th><th>Why</th></tr></thead>
+              <tbody id="builtinRows"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card lab-card lab-wide">
+          <div class="lab-heading">
+            <div><span class="badge">PATTERN</span><h3>Two-Pointer Playground</h3></div>
+          </div>
+          <div class="controls">
+            <label>Numbers
+              <input id="pairValues" value="1, 2, 4, 7, 11, 15" />
+            </label>
+            <label>Target
+              <input id="pairTarget" type="number" value="15" />
+            </label>
+            <button id="runPair" class="button primary small">Find pair</button>
+          </div>
+          <div id="pairOutput" class="step-list"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split-section">
+      <div>
+        <span class="eyebrow">03 / ENGINEERING THINKING</span>
+        <h2>Prerequisites are more than syntax.</h2>
+        <p class="lead">
+          A strong DSA foundation connects code behavior to memory, complexity, invariants, and testing.
+          This project demonstrates those connections in a way recruiters can actually click through.
+        </p>
+      </div>
+      <div class="check-grid">
+        <div class="check-item"><span>01</span><div><strong>Explain complexity</strong><small>Why does the loop scale that way?</small></div></div>
+        <div class="check-item"><span>02</span><div><strong>Predict mutation</strong><small>Which variables share an object?</small></div></div>
+        <div class="check-item"><span>03</span><div><strong>Trace recursion</strong><small>Where is the base case and how does unwinding work?</small></div></div>
+        <div class="check-item"><span>04</span><div><strong>Choose a built-in</strong><small>List, dict, set, tuple, or deque?</small></div></div>
+        <div class="check-item"><span>05</span><div><strong>Model with classes</strong><small>Can you represent nodes and containers cleanly?</small></div></div>
+        <div class="check-item"><span>06</span><div><strong>Test edge cases</strong><small>Empty input, one item, duplicates, bad values.</small></div></div>
+      </div>
+    </section>
+
+    <section id="quiz" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">04 / READINESS CHECK</span>
+          <h2>5-question prerequisite quiz</h2>
+        </div>
+        <p>Your score is saved locally in your browser so the project works without a database.</p>
+      </div>
+
+      <form id="quizForm" class="quiz-grid">
+        <article class="card question">
+          <span>01</span><h3>Average dictionary lookup?</h3>
+          <label><input type="radio" name="q1" value="O(n)" /> O(n)</label>
+          <label><input type="radio" name="q1" value="O(1)" /> O(1)</label>
+          <label><input type="radio" name="q1" value="O(n²)" /> O(n²)</label>
+        </article>
+        <article class="card question">
+          <span>02</span><h3>What prevents infinite recursion?</h3>
+          <label><input type="radio" name="q2" value="loop" /> A for loop</label>
+          <label><input type="radio" name="q2" value="base-case" /> A base case</label>
+          <label><input type="radio" name="q2" value="class" /> A class</label>
+        </article>
+        <article class="card question">
+          <span>03</span><h3>Best built-in for key → value lookup?</h3>
+          <label><input type="radio" name="q3" value="tuple" /> tuple</label>
+          <label><input type="radio" name="q3" value="dict" /> dict</label>
+          <label><input type="radio" name="q3" value="str" /> str</label>
+        </article>
+        <article class="card question">
+          <span>04</span><h3>Two names referencing the same object is called…</h3>
+          <label><input type="radio" name="q4" value="alias" /> aliasing</label>
+          <label><input type="radio" name="q4" value="sorting" /> sorting</label>
+          <label><input type="radio" name="q4" value="hashing" /> hashing</label>
+        </article>
+        <article class="card question">
+          <span>05</span><h3>A single full pass through n items is usually…</h3>
+          <label><input type="radio" name="q5" value="O(1)" /> O(1)</label>
+          <label><input type="radio" name="q5" value="O(log n)" /> O(log n)</label>
+          <label><input type="radio" name="q5" value="O(n)" /> O(n)</label>
+        </article>
+        <article class="card quiz-submit">
+          <div>
+            <span class="eyebrow">YOUR SCORE</span>
+            <strong id="scoreDisplay">— / 5</strong>
+            <small id="scoreMessage">Complete all five questions.</small>
+          </div>
+          <button class="button primary" type="submit">Check readiness</button>
+        </article>
+      </form>
+    </section>
+
+    <section id="about" class="section about-card card">
+      <div>
+        <span class="eyebrow">05 / PORTFOLIO STORY</span>
+        <h2>What this project demonstrates</h2>
+      </div>
+      <div class="about-columns">
+        <p>
+          <strong>Computer Science:</strong> asymptotic reasoning, recursion, reference semantics,
+          built-in data structure tradeoffs, OOP modeling, and reusable problem-solving patterns.
+        </p>
+        <p>
+          <strong>Full-Stack Engineering:</strong> Flask routes and JSON APIs, responsive HTML/CSS,
+          client-side JavaScript, local persistence, validation, tests, and CI.
+        </p>
+        <p>
+          <strong>Next expansion:</strong> add linked lists, stacks, queues, trees, graphs, sorting,
+          searching, user accounts, a database, and visual algorithm animations as your DSA course progresses.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Built with Python + Flask + vanilla JavaScript.</span>
+    <span class="mono">from prerequisites import confidence</span>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
