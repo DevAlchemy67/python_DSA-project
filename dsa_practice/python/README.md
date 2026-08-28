@@ -1,35 +1,39 @@
-# DSA Practice - Python
+# Python DSA Practice
 
-Starter project for Data Structures and Algorithms practice in Python.
+This folder contains Python implementations of common Data Structures and Algorithms for practice.
 
-## Getting Started
+## Available Implementations
 
-Add your algorithm implementations in this folder. Example topics:
-- Sorting algorithms (Bubble Sort, Quick Sort, Merge Sort)
-- Searching algorithms (Binary Search, Linear Search)
-- Graph algorithms (DFS, BFS, Dijkstra's)
-- Dynamic Programming
-- Recursion
+### Sorting Algorithms
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
 
-## Template
+### Searching Algorithms
+- Linear Search
+- Binary Search
 
+### Data Structures
+- Linked List
+- Stack
+- Queue
+- Binary Search Tree
+
+## How to Use
+
+1. Import and use the implementations:
 ```python
-# algorithm_name.py
-def algorithm_name(input):
-    """
-    Brief description of the algorithm.
-    
-    Args:
-        input: Description of input parameters
-        
-    Returns:
-        Description of return value
-    """
-    # Your implementation here
-    pass
+from sorting import bubble_sort, quick_sort
+from data_structures import LinkedList, Stack
 
-# Test cases
-if __name__ == "__main__":
-    # Add test cases to verify your implementation
-    pass
+arr = [5, 2, 9, 1, 5]
+sorted_arr = quick_sort(arr)
+print(sorted_arr)
+```
+
+2. Run tests:
+```bash
+python -m pytest test_*.py -v
 ```

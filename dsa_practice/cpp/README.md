@@ -1,35 +1,36 @@
-# DSA Practice - C++
+# C++ DSA Practice
 
-Starter project for Data Structures and Algorithms practice in C++.
+This folder contains C++ implementations of common Data Structures and Algorithms for practice.
 
-## Getting Started
+## Available Implementations
 
-Add your algorithm implementations in this folder. Example topics:
-- Sorting algorithms (Bubble Sort, Quick Sort, Merge Sort)
-- Searching algorithms (Binary Search, Linear Search)
-- Graph algorithms (DFS, BFS, Dijkstra's)
-- Dynamic Programming
-- Recursion
+### Sorting Algorithms
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
 
-## Template
+### Searching Algorithms
+- Linear Search
+- Binary Search
 
-```cpp
-// algorithm_name.cpp
-#include <iostream>
-#include <vector>
-using namespace std;
+### Data Structures
+- Linked List
+- Stack
+- Queue
+- Binary Search Tree
 
-/**
- * Brief description of the algorithm.
- *
- * @param input Description of input parameters
- * @return Description of return value
- */
-// Your implementation here
+## How to Compile and Run
 
-/* Test cases */
-int main() {
-    // Add test cases to verify your implementation
-    return 0;
-}
+1. Compile individual files:
+```bash
+g++ -std=c++11 sorting.cpp -o sorting
+./sorting
+```
+
+2. Or compile all tests:
+```bash
+g++ -std=c++11 test_*.cpp -o tests
+./tests
 ```
